@@ -7,6 +7,10 @@
     "url": "git://github.com/bfirsh/jsnes.git"
   },
   "license": "BSD",
+  "dependencies": {
+    "socket.io": "latest",
+    "express": "latest"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",

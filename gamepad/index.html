@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSNE Gamepad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+    <link type="text/css" rel="stylesheet" href="gamepad.css" />
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="../socket.io/socket.io.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var url = 'http://10.0.0.6:5000';
+
+    var gamepad = {
+        socket: undefined,
+        playerId: 1,
+        commands: ['up', 'left', 'down', 'right', 'a', 'b', 'select', 'start'],
+
+        init: function() {
+            //if (this.webSocketTest()) {
+            if (true) {
+                //connect to socket io
+                this.socket = io.connect(url);
+
+                //button bindings
+                var that = this;
+
+
+                $(document).on('touchstart', '.button', function(evt){
+                    that._handleClick(evt.currentTarget.classList, 'keyDown');
+                });
+
+                $(document).on('touchend', '.button', function(evt){
+                   that._handleClick(evt.currentTarget.classList, 'keyUp');
+                });
+            }
+        },
+
+
+        _handleClick: function(element, mode){
+            for(com in this.commands){
+                if(element.contains(this.commands[com])) this._sendCommand(this.commands[com], mode);
+            }
+        },
+
+        _sendCommand: function(btn, evt) {
+            console.log("sending message");
+            var result = this.socket.emit('gamepad_message', {
+                playerId: this.playerId,
+                key: btn,
+                evt: evt
+            });
+        },
+
+
+        webSocketTest: function() {
+            if ("WebSocket" in window) {
+                return true;
+            } else {
+                // the browser doesn't support WebSockets
+                alert("WebSockets NOT supported in this Browser");
+                return false;
+            }
+        }
+    };
+
+    gamepad.init();
+    </script>
+</head>
+
+<body>
+    <div class="gamepad">
+        <div class="cross">
+            <div class="button up"></div>
+            <br>
+            <div class="button left"></div>
+            <div class="button right"></div>
+            <br>
+            <div class="button down"></div>
+
+        </div>
+
+        <div class="startselect">
+            <div class="button start">Start</div>
+            <div class="button select">Select</div>
+        </div>
+        <div class="ab">
+            <div class="button a">A</div>
+            <div class="button b">B</div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

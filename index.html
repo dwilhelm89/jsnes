@@ -112,6 +112,7 @@
 
     var socket = io.connect('http://localhost:5000');
 
+    //Translation map for the key-codes
     var keymap = {
         1: {
             up: 38,
@@ -137,9 +138,7 @@
     };
 
 
-    //this.nes.keyboard.keyDown(evt)
-    //this.nes.keyboard.keyUp(evt)
-    //this.nes.keyboard.keyPress(evt)
+    //Receive the gamepad_commands
     socket.on('gamepad_command', function(data) {
         if (data && data.playerId && data.evt) {
             console.log(data.key + " " + data.evt + " " + keymap[data.playerId][data.key]);

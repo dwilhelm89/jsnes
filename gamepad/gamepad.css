@@ -16,19 +16,19 @@ html, body {
 }
 .cross {
     height: 100%;
-    width: 33%;
+    width: 30%;
     float: left;
     background-color: black;
 }
 .ab {
     height: 100%;
-    width: 33%;
+    width: 30%;
     float: left;
     background-color: black;
 }
 .startselect {
     height: 100%;
-    width: 33%;
+    width: 30%;
     float: left;
     border-style: solid;
     border-color: black;
@@ -84,4 +84,12 @@ html, body {
 	color: grey;
 	top: 50%;
 
+}
+
+
+
+@media (min-width: 700px) {
+  .startselect, .ab, .cross{
+  	width: 33% !important;
+  }
 }

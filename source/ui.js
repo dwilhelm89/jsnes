@@ -106,8 +106,10 @@ if (typeof jQuery !== 'undefined') {
                     }
                     else {
                         self.screen.animate({
-                            width: '512px',
-                            height: '480px'
+                            //width: '512px',
+                            //height: '480px'
+                            width: '853px',
+                            height: '800px'
                         });
                         self.buttons.zoom.attr("value", "zoom out");
                         self.zoomed = true;

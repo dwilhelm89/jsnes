@@ -2,6 +2,30 @@ html, body {
     height: 95%;
     width: 95%;
 }
+
+.playerselect{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-color: white;
+    z-index: 1000;
+}
+
+.playerselect_buttons{
+    width: 200px;
+    margin:auto;
+}
+
+
+button{
+    border-radius: 1px;
+    padding: 20px;
+    background-color: rgb(247, 247, 247);
+    margin: 20px;
+}
+
 .gamepad {
     height: 100%;
     width: 100%;

@@ -76,10 +76,28 @@
     };
 
     gamepad.init();
+
+    $( document ).on( 'click', '#player1', function () {
+       gamepad.playerId = 1;
+       $('.playerselect').css("display", "none");
+    });
+
+    $( document ).on( 'click', '#player2', function () {
+       gamepad.playerId = 2;
+       $('.playerselect').css("display", "none");
+    });
     </script>
 </head>
 
 <body>
+    <div class="playerselect">
+        <div class="playerselect_buttons">
+            <button id="player1">Player 1</button><br>
+            <button id="player2">Player 2</button>
+
+        </div>
+        
+    </div>
     <button onclick="this.style.display='none';gamepad.launch_fullscreen();">Fullscreen</button>
     <div class="gamepad">
         <div class="cross">
